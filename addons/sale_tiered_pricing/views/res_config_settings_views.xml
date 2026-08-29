@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_tiered_pricing" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.sale.tiered.pricing</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='pricing_setting_container']" position="after">
+                <block title="Margin Guard" id="sale_tiered_pricing_setting_container">
+                    <setting help="Quotations whose aggregate margin falls below this percentage are flagged.">
+                        <field name="margin_guard_min_percent"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

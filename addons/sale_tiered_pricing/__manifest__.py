@@ -14,6 +14,7 @@ configurable minimum.
     "data": [
         "security/ir.model.access.csv",
         "views/pricing_tier_views.xml",
+        "views/res_config_settings_views.xml",
     ],
     "installable": True,
     "application": False,
