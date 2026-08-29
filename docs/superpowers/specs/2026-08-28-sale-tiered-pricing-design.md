@@ -43,6 +43,21 @@ mocking).
   GitHub URL exist.
 - AI/LLM bridge features (explicitly deferred to a future follow-up project).
 
+## Isolation constraint
+
+`D:\1_Working` contains the candidate's real Odoo work environment: Community
+**and Enterprise** source trees, plus client/employer project folders
+(`Inbrasol`, `comsitec`, `empresas`, `ModuloNUevo`). Odoo Enterprise is
+licensed, proprietary software, and those project folders are almost
+certainly employer/client-owned work product. This project must stay fully
+isolated from all of it:
+- No files, configs, or code read from or copied out of `D:\1_Working`.
+- No dependency on Odoo Enterprise — Community edition only.
+- The Docker environment pulls the official `odoo:19` image fresh from Docker
+  Hub; it does not reuse `D:\1_Working\docker-compose.yml` or `odoo.conf`.
+- All module code is written from scratch from general domain knowledge, not
+  copied or adapted from any file under `D:\1_Working`.
+
 ## Environment & repo layout
 
 Runs via Docker Compose — `odoo:19` + `postgres:16` — so anyone cloning the
