@@ -35,7 +35,7 @@ keeps `sale.order.line`'s job limited to *matching* a tier rather than
 
 ```bash
 docker compose up -d
-docker compose exec odoo odoo -d sale_tiered_pricing -i sale_tiered_pricing --without-demo=all
+docker compose exec odoo odoo -d sale_tiered_pricing -i sale_tiered_pricing --without-demo=all --db_host=db --db_user=odoo --db_password=odoo
 ```
 
 Then open `http://localhost:8069`.
@@ -43,7 +43,7 @@ Then open `http://localhost:8069`.
 ## Running the tests
 
 ```bash
-docker compose exec odoo odoo -d sale_tiered_pricing_test -i sale_tiered_pricing --test-enable --stop-after-init --without-demo=all
+docker compose exec odoo odoo -d sale_tiered_pricing_test -i sale_tiered_pricing --test-enable --stop-after-init --without-demo=all --db_host=db --db_user=odoo --db_password=odoo
 ```
 
 ## Scope
