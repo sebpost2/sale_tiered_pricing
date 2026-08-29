@@ -103,3 +103,48 @@ class TestPricingTier(TransactionCase):
         )
         self.assertFalse(line_a.tier_id)
         self.assertEqual(line_b.tier_id, self.tier_50)
+
+    def test_margin_without_discount(self):
+        _, line = self._create_order(1)
+        self.assertAlmostEqual(line.order_id.margin_percent, 0.40, places=2)
+
+    def test_margin_with_discount_lower_than_without(self):
+        order_no_discount, _ = self._create_order(1)
+        order_with_discount, _ = self._create_order(60)
+        self.assertLess(order_with_discount.margin_percent, order_no_discount.margin_percent)
+
+    def test_margin_guard_triggers_below_threshold(self):
+        self.env.company.margin_guard_min_percent = 35.0
+        order, _ = self._create_order(60)
+        self.assertTrue(order.margin_guard_triggered)
+        self.assertIn("35.0", order.margin_guard_message)
+
+    def test_margin_guard_does_not_trigger_above_threshold(self):
+        self.env.company.margin_guard_min_percent = 10.0
+        order, _ = self._create_order(1)
+        self.assertFalse(order.margin_guard_triggered)
+        self.assertFalse(order.margin_guard_message)
+
+    def test_margin_guard_disabled_when_threshold_zero(self):
+        self.env.company.margin_guard_min_percent = 0.0
+        order, _ = self._create_order(60)
+        self.assertFalse(order.margin_guard_triggered)
+
+    def test_multiline_order_guard_reflects_aggregate(self):
+        self.env.company.margin_guard_min_percent = 25.0
+        order = self.env["sale.order"].create({"partner_id": self.partner.id})
+        healthy_product = self.env["product.product"].create(
+            {"name": "High Margin", "type": "consu", "list_price": 100.0, "standard_price": 10.0}
+        )
+        self.env["sale.order.line"].create(
+            {"order_id": order.id, "product_id": healthy_product.id, "product_uom_qty": 1}
+        )
+        self.env["sale.order.line"].create(
+            {"order_id": order.id, "product_id": self.product.id, "product_uom_qty": 60}
+        )
+        self.assertFalse(order.margin_guard_triggered)
+
+    def test_empty_order_does_not_trigger_guard(self):
+        self.env.company.margin_guard_min_percent = 50.0
+        order = self.env["sale.order"].create({"partner_id": self.partner.id})
+        self.assertFalse(order.margin_guard_triggered)
