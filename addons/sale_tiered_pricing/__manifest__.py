@@ -11,7 +11,10 @@ configurable minimum.
     "license": "LGPL-3",
     "category": "Sales",
     "depends": ["sale", "sale_margin"],
-    "data": [],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/pricing_tier_views.xml",
+    ],
     "installable": True,
     "application": False,
 }

@@ -1,0 +1,26 @@
+<odoo>
+    <record id="view_sale_pricing_tier_list" model="ir.ui.view">
+        <field name="name">sale.pricing.tier.list</field>
+        <field name="model">sale.pricing.tier</field>
+        <field name="arch" type="xml">
+            <list string="Pricing Tiers" editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="min_qty"/>
+                <field name="discount_percent"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_sale_pricing_tier" model="ir.actions.act_window">
+        <field name="name">Pricing Tiers</field>
+        <field name="res_model">sale.pricing.tier</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_sale_pricing_tier"
+              name="Pricing Tiers"
+              parent="sale.menu_sale_config"
+              action="action_sale_pricing_tier"
+              sequence="50"/>
+</odoo>
