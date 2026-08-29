@@ -148,3 +148,13 @@ class TestPricingTier(TransactionCase):
         self.env.company.margin_guard_min_percent = 50.0
         order = self.env["sale.order"].create({"partner_id": self.partner.id})
         self.assertFalse(order.margin_guard_triggered)
+
+    def test_quotation_report_renders_without_error(self):
+        order, _ = self._create_order(60)
+        report = self.env["ir.actions.report"]._get_report_from_name(
+            "sale.report_saleorder"
+        )
+        content, _ = report._render_qweb_html(
+            "sale.report_saleorder", order.ids
+        )
+        self.assertIn(b"50+", content)

@@ -16,6 +16,7 @@ configurable minimum.
         "views/pricing_tier_views.xml",
         "views/res_config_settings_views.xml",
         "views/sale_order_views.xml",
+        "report/quotation_report.xml",
     ],
     "installable": True,
     "application": False,

@@ -1,0 +1,9 @@
+<odoo>
+    <template id="report_saleorder_document_tier_note" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//td[@name='td_product_name']" position="inside">
+            <div t-if="line.tier_id" class="text-muted" style="font-size: 0.85em;">
+                Volume discount applied: <span t-esc="line.tier_id.name"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>
