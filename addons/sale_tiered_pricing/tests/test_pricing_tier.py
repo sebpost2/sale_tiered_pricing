@@ -131,7 +131,7 @@ class TestPricingTier(TransactionCase):
         self.assertFalse(order.margin_guard_triggered)
 
     def test_multiline_order_guard_reflects_aggregate(self):
-        self.env.company.margin_guard_min_percent = 25.0
+        self.env.company.margin_guard_min_percent = 30.0
         order = self.env["sale.order"].create({"partner_id": self.partner.id})
         healthy_product = self.env["product.product"].create(
             {"name": "High Margin", "type": "consu", "list_price": 100.0, "standard_price": 10.0}

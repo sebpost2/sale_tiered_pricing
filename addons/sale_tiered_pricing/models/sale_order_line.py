@@ -10,12 +10,6 @@ class SaleOrderLine(models.Model):
         compute="_compute_tier_id",
         store=True,
     )
-    discount = fields.Float(
-        digits="Discount",
-        compute="_compute_discount_from_tier",
-        store=True,
-        readonly=False,
-    )
 
     @api.depends("product_uom_qty")
     def _compute_tier_id(self):
@@ -28,7 +22,11 @@ class SaleOrderLine(models.Model):
                     break
             line.tier_id = matched
 
+    # Known limitation: resets discount to 0 for non-tier-matched lines on every quantity
+    # edit, even if a pricelist discount was set independently — this module doesn't
+    # attempt full reconciliation between tier and pricelist discounts.
     @api.depends("tier_id", "tier_id.discount_percent")
-    def _compute_discount_from_tier(self):
+    def _compute_discount(self):
+        super()._compute_discount()
         for line in self:
             line.discount = line.tier_id.discount_percent if line.tier_id else 0.0
