@@ -18,6 +18,7 @@ configurable minimum.
         "views/sale_order_views.xml",
         "report/quotation_report.xml",
     ],
+    "demo": ["data/demo.xml"],
     "installable": True,
     "application": False,
 }

@@ -1,0 +1,155 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_tiered_pricing
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0-20260817\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-26 21:34+0000\n"
+"PO-Revision-Date: 2026-10-26 21:34+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_tiered_pricing
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_sale_order_line__tier_id
+msgid "Applied Pricing Tier"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model:ir.model,name:sale_tiered_pricing.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model:ir.model,name:sale_tiered_pricing.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_sale_pricing_tier__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_sale_pricing_tier__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_sale_pricing_tier__discount_percent
+msgid "Discount (%)"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_res_company__display_name
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_sale_order__display_name
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_sale_order_line__display_name
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_sale_pricing_tier__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_res_company__id
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_res_config_settings__id
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_sale_order__id
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_sale_order_line__id
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_sale_pricing_tier__id
+msgid "ID"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_sale_pricing_tier__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_sale_pricing_tier__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#. odoo-python
+#: code:addons/sale_tiered_pricing/models/sale_order.py:0
+msgid ""
+"Margin %(actual).1f%% is below the configured minimum of %(minimum).1f%%."
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model_terms:ir.ui.view,arch_db:sale_tiered_pricing.res_config_settings_view_form_tiered_pricing
+msgid "Margin Guard"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_sale_order__margin_guard_message
+msgid "Margin Guard Message"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_sale_order__margin_guard_triggered
+msgid "Margin Guard Triggered"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_res_company__margin_guard_min_percent
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_res_config_settings__margin_guard_min_percent
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_sale_order__margin_guard_min_percent
+msgid "Minimum Margin (%)"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_sale_pricing_tier__min_qty
+msgid "Minimum Quantity"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model:ir.model.fields,field_description:sale_tiered_pricing.field_sale_pricing_tier__name
+msgid "Name"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model:ir.actions.act_window,name:sale_tiered_pricing.action_sale_pricing_tier
+#: model:ir.ui.menu,name:sale_tiered_pricing.menu_sale_pricing_tier
+#: model_terms:ir.ui.view,arch_db:sale_tiered_pricing.view_sale_pricing_tier_list
+msgid "Pricing Tiers"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model_terms:ir.ui.view,arch_db:sale_tiered_pricing.res_config_settings_view_form_tiered_pricing
+msgid ""
+"Quotations whose aggregate margin falls below this percentage are flagged."
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model:ir.model.fields,help:sale_tiered_pricing.field_res_company__margin_guard_min_percent
+#: model:ir.model.fields,help:sale_tiered_pricing.field_res_config_settings__margin_guard_min_percent
+#: model:ir.model.fields,help:sale_tiered_pricing.field_sale_order__margin_guard_min_percent
+msgid ""
+"Quotations with an aggregate margin below this percentage are flagged. Set "
+"to 0 to disable."
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model:ir.model,name:sale_tiered_pricing.model_sale_pricing_tier
+msgid "Sale Pricing Tier"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model:ir.model,name:sale_tiered_pricing.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model:ir.model,name:sale_tiered_pricing.model_sale_order_line
+msgid "Sales Order Line"
+msgstr ""
+
+#. module: sale_tiered_pricing
+#: model_terms:ir.ui.view,arch_db:sale_tiered_pricing.report_saleorder_document_tier_note
+msgid "Volume discount applied:"
+msgstr ""

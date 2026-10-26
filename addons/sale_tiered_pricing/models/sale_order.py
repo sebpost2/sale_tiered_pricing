@@ -1,4 +1,4 @@
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 
 
 class SaleOrder(models.Model):
@@ -14,23 +14,26 @@ class SaleOrder(models.Model):
         compute="_compute_margin_guard",
         store=True,
     )
+    # Not stored: built when read, so each user gets it in their own language.
     margin_guard_message = fields.Char(
         string="Margin Guard Message",
-        compute="_compute_margin_guard",
-        store=True,
+        compute="_compute_margin_guard_message",
     )
 
     @api.depends("margin_percent", "margin_guard_min_percent", "order_line")
     def _compute_margin_guard(self):
         for order in self:
             min_percent = order.margin_guard_min_percent
-            actual_percent = order.margin_percent * 100
-            if min_percent and order.order_line and actual_percent < min_percent:
-                order.margin_guard_triggered = True
-                order.margin_guard_message = (
-                    "Margin %.1f%% is below the configured minimum of %.1f%%."
-                    % (actual_percent, min_percent)
-                )
-            else:
-                order.margin_guard_triggered = False
-                order.margin_guard_message = False
+            order.margin_guard_triggered = bool(
+                min_percent and order.order_line and order.margin_percent * 100 < min_percent
+            )
+
+    @api.depends("margin_guard_triggered", "margin_percent", "margin_guard_min_percent")
+    @api.depends_context("lang")
+    def _compute_margin_guard_message(self):
+        for order in self:
+            order.margin_guard_message = order.margin_guard_triggered and _(
+                "Margin %(actual).1f%% is below the configured minimum of %(minimum).1f%%.",
+                actual=order.margin_percent * 100,
+                minimum=order.margin_guard_min_percent,
+            )

@@ -6,6 +6,8 @@ class TestPricingTier(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        # Tiers are global: start from none, so demo data (or a real database) can't change the results.
+        cls.env["sale.pricing.tier"].search([]).unlink()
         cls.partner = cls.env["res.partner"].create({"name": "Test Customer"})
         cls.product = cls.env["product.product"].create(
             {
@@ -118,6 +120,14 @@ class TestPricingTier(TransactionCase):
         order, _ = self._create_order(60)
         self.assertTrue(order.margin_guard_triggered)
         self.assertIn("35.0", order.margin_guard_message)
+
+    def test_margin_guard_message_is_in_spanish_for_a_peruvian_user(self):
+        # es_PE reads the module's es.po (Odoo falls back es_PE -> es / es_419).
+        self.env["res.lang"]._activate_lang("es_PE")
+        self.env.company.margin_guard_min_percent = 35.0
+        order, _ = self._create_order(60)
+        self.assertIn("está por debajo del mínimo configurado", order.with_context(lang="es_PE").margin_guard_message)
+        self.assertIn("is below the configured minimum", order.with_context(lang="en_US").margin_guard_message)
 
     def test_margin_guard_does_not_trigger_above_threshold(self):
         self.env.company.margin_guard_min_percent = 10.0
