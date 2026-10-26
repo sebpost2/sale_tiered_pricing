@@ -35,6 +35,10 @@ class TestPricingTier(TransactionCase):
         )
         return order, line
 
+    def test_installing_turns_on_the_discount_column(self):
+        # Tiers write the native line discount; without this group its column stays hidden.
+        self.assertTrue(self.env.user.has_group("sale.group_discount_per_so_line"))
+
     def test_qty_below_first_tier_gets_no_discount(self):
         _, line = self._create_order(9)
         self.assertFalse(line.tier_id)

@@ -13,6 +13,7 @@ configurable minimum.
     "depends": ["sale", "sale_margin"],
     "data": [
         "security/ir.model.access.csv",
+        "data/res_groups.xml",
         "views/pricing_tier_views.xml",
         "views/res_config_settings_views.xml",
         "views/sale_order_views.xml",

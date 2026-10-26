@@ -2,7 +2,7 @@
 
 [![tests](https://github.com/sebpost2/sale_tiered_pricing/actions/workflows/tests.yml/badge.svg)](https://github.com/sebpost2/sale_tiered_pricing/actions/workflows/tests.yml)
 
-**19 passing tests.** An Odoo 19 addon that applies volume discount tiers to
+**20 passing tests.** An Odoo 19 addon that applies volume discount tiers to
 quotation lines automatically, flags quotations whose aggregate margin falls
 below a configurable minimum, and extends the quotation PDF to show the
 applied tier.
@@ -14,7 +14,8 @@ applied tier.
   Pricing Tiers.
 - **Automatic discounting**: each quotation line's quantity is matched
   against the tier ladder and the discount is applied to Odoo's native
-  `discount` field — no parallel pricing mechanism.
+  `discount` field — no parallel pricing mechanism. Installing the module turns on
+  Settings, Sales, Discounts, so the discount column shows.
 - **Margin guard**: a configurable minimum margin percentage (Settings,
   Sales) is checked against the quotation's aggregate margin, computed by
   Odoo's own `sale_margin` module. Quotations below the minimum show a

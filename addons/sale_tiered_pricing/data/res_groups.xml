@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tiers write Odoo's native line discount, whose column only shows with Settings > Sales >
+         Discounts on. Turn it on, or a clean database applies discounts nobody can see. -->
+    <record id="base.group_user" model="res.groups">
+        <field name="implied_ids" eval="[Command.link(ref('sale.group_discount_per_so_line'))]"/>
+    </record>
+</odoo>
