@@ -1,5 +1,7 @@
 # sale_tiered_pricing
 
+[![tests](https://github.com/sebpost2/sale_tiered_pricing/actions/workflows/tests.yml/badge.svg)](https://github.com/sebpost2/sale_tiered_pricing/actions/workflows/tests.yml)
+
 **18 passing tests.** An Odoo 19 addon that applies volume discount tiers to
 quotation lines automatically, flags quotations whose aggregate margin falls
 below a configurable minimum, and extends the quotation PDF to show the
@@ -43,7 +45,7 @@ Then open `http://localhost:8069`.
 ## Running the tests
 
 ```bash
-docker compose exec odoo odoo -d sale_tiered_pricing_test -i sale_tiered_pricing --test-enable --stop-after-init --without-demo=all --db_host=db --db_user=odoo --db_password=odoo
+docker compose exec odoo odoo -d sale_tiered_pricing_test -i sale_tiered_pricing --test-enable --test-tags /sale_tiered_pricing --stop-after-init --without-demo=all --db_host=db --db_user=odoo --db_password=odoo
 ```
 
 ## Scope
